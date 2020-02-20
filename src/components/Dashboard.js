@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-import { Box, Image, Text, Table, TableHeader, TableRow, TableCell, TableBody } from 'grommet'
+import PlayerCard from './Player/PlayerCard'
 
 const Dashboard = () => {
 
@@ -27,36 +27,7 @@ const Dashboard = () => {
     if (!player || !stats) { return 'loading...' }
 
     return (
-        <Box width='medium' direction='row' pad='small'>
-            <Image fill src={`https://securea.mlb.com/mlb/images/players/head_shot/${player.player_id}.jpg`} alt={'Player Image'} style={{ width: '150px' }} />
-            <Box>
-                <Box direction='row'>
-                    <Text margin={{ 'horizontal': 'small' }}>{player.name_display_first_last}</Text>
-                    <Text margin={{ 'horizontal': 'small' }}>{player.position}</Text>
-                    <Text margin={{ 'horizontal': 'small' }}>{player.bats}</Text>
-                </Box>
-                <Box>
-                    <Text margin={{ 'horizontal': 'small' }} size='small'>{player.team_full}</Text>
-                </Box>
-                <Box margin={{ 'vertical': 'small' }}>
-                    <Table caption='Fantasy Stats'>
-                        <TableHeader>
-                            <TableRow>
-                                <TableCell><Text size='xsmall'>{'Runs'}</Text></TableCell>
-                                <TableCell><Text size='xsmall'>{'RBI'}</Text></TableCell>
-                                <TableCell><Text size='xsmall'>{'HR'}</Text></TableCell>
-                                <TableCell><Text size='xsmall'>{'SB'}</Text></TableCell>
-                                <TableCell><Text size='xsmall'>{'.AVG'}</Text></TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell><Text size='xsmall'>{stats.r}</Text></TableCell>
-                            </TableRow>
-                        </TableHeader>
-                    </Table>
-                </Box>
-            </Box>
-
-        </Box>
+        <PlayerCard player={player} stats={stats} />
     )
 
 }
