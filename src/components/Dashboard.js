@@ -32,7 +32,8 @@ const Dashboard = () => {
     return (
         <>
             <button onClick={() => loginWithRedirect({})}>Login</button>
-            <PlayerCard player={player} stats={stats} />
+            {{//<PlayerCard player={player} stats={stats} />
+            }}
         </>
     )
 
