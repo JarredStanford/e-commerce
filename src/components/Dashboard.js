@@ -30,7 +30,10 @@ const Dashboard = () => {
     //if (!player || !stats) { return 'loading..' }
 
     return (
-        <button onClick={() => loginWithRedirect({})}>Login</button>
+        <>
+            <a href="https://api.login.yahoo.com/oauth2/request_auth?client_id=dj0yJmk9b2s1SElHWlhnNW9VJmQ9WVdrOWR6RkROV1ZxTjJzbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTRm&redirect_uri=https://sad-jang-fc478d.netlify.com/&response_type=code&language=en-us">yo</a>
+            <button onClick={() => loginWithRedirect({})}>Login</button>
+        </>
     )
 
 }

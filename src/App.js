@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
@@ -19,6 +19,12 @@ function App() {
     const games = await axios.get('https://baseball-league.herokuapp.com/data/player/mlb.p.8861/')
     console.log(games)
   }
+
+  useEffect(() => {
+    if (window.location.search.includes("code=")) {
+      console.log(window.location.search)
+    }
+  })
 
   console.log(isAuthenticated, user)
 
