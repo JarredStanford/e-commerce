@@ -30,11 +30,7 @@ const Dashboard = () => {
     //if (!player || !stats) { return 'loading..' }
 
     return (
-        <>
-            <button onClick={() => loginWithRedirect({})}>Login</button>
-            {{//<PlayerCard player={player} stats={stats} />
-            }}
-        </>
+        <button onClick={() => loginWithRedirect({})}>Login</button>
     )
 
 }
