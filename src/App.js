@@ -32,10 +32,10 @@ function App() {
   return (
     <>
       <Switch>
-        <Route exact path='/login' component={!isAuthenticated && Dashboard} />
+        <Route exact path='/' component={!isAuthenticated && Dashboard} />
       </Switch>
       <Switch>
-        <Route exact path='/' component={Dashboard} />
+        <Route exact path='/login' component={Dashboard} />
       </Switch>
     </>
   )
