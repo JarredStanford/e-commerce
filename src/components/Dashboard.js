@@ -27,7 +27,7 @@ const Dashboard = () => {
 
     const { loginWithRedirect } = useAuth0();
 
-    if (!player || !stats) { return 'loading..' }
+    //if (!player || !stats) { return 'loading..' }
 
     return (
         <>
