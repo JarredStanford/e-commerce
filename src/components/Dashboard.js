@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useAuth0 } from "./react-auth0-wrapper";
 
 import PlayerCard from './Player/PlayerCard'
 
@@ -24,10 +25,15 @@ const Dashboard = () => {
     console.log(player)
     console.log(stats)
 
-    if (!player || !stats) { return 'loading...' }
+    const { loginWithRedirect } = useAuth0();
+
+    if (!player || !stats) { return 'loading..' }
 
     return (
-        <PlayerCard player={player} stats={stats} />
+        <>
+            <button onClick={() => loginWithRedirect({})}>Login</button>
+            <PlayerCard player={player} stats={stats} />
+        </>
     )
 
 }

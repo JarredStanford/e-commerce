@@ -2,10 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
+import { Route, Switch } from "react-router-dom";
 
 import { Grommet } from 'grommet'
 
 import Dashboard from './components/Dashboard'
+import PrivateRoute from './components/utils/PrivateRoute'
 
 import { useAuth0 } from "./components/react-auth0-wrapper";
 
@@ -18,13 +20,24 @@ function App() {
     console.log(games)
   }
 
+  console.log(isAuthenticated, user)
+
+  if (loading) {
+    return (
+      'loading...'
+    );
+  }
 
 
   return (
-    <Grommet plain>
-      <Dashboard />
-      <button onClick={() => call()}>nah</button>
-    </Grommet>
+    <>
+      <Switch>
+        <Route exact path='/login' component={!isAuthenticated && Dashboard} />
+      </Switch>
+      <Switch>
+        <Route exact path='/' component={Dashboard} />
+      </Switch>
+    </>
   )
 
 }
