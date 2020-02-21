@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Router } from "react-router-dom";
 
 import { Grommet } from 'grommet'
 
@@ -30,14 +30,14 @@ function App() {
 
 
   return (
-    <>
+    <Router>
       <Switch>
         <Route exact path='/' component={!isAuthenticated && Dashboard} />
       </Switch>
       <Switch>
         <Route exact path='/login' component={Dashboard} />
       </Switch>
-    </>
+    </Router>
   )
 
 }
