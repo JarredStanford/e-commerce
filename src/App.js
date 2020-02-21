@@ -23,6 +23,8 @@ function App() {
   useEffect(() => {
     if (window.location.search.includes("code=")) {
       console.log(window.location.search)
+      const code = window.location.search.substr(window.location.search.indexOf('=') + 1)
+      console.log(code)
     }
   })
 
