@@ -7,13 +7,15 @@ import { Route, Switch, Router } from "react-router-dom";
 import { Grommet } from 'grommet'
 
 import Dashboard from './components/Dashboard'
-import PrivateRoute from './components/utils/PrivateRoute'
-
-import { useAuth0 } from "./components/react-auth0-wrapper";
 
 function App() {
 
-  const { loading, user, isAuthenticated } = useAuth0();
+  const client_id = 'dj0yJmk9b2s1SElHWlhnNW9VJmQ9WVdrOWR6RkROV1ZxTjJzbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTRm'
+  const client_secret = '715ae4395b403ff6d47c66aaaa6adf7c0cd5b43a'
+
+  const auth_header = Buffer.from(`${client_id}:${client_secret}`, `binary`).toString(`base64`)
+
+  console.log(auth_header)
 
   const call = async () => {
     const games = await axios.get('https://baseball-league.herokuapp.com/data/player/mlb.p.8861/')
@@ -28,19 +30,31 @@ function App() {
     }
   })
 
-  console.log(isAuthenticated, user)
+  useEffect(() => {
+    const getToken = async () => {
+      const options = {
+        'Authorization': `Basic ${auth_header}`,
+        'Content-Type': 'application/json'
+      }
 
-  if (loading) {
-    return (
-      'loading...'
-    );
-  }
+      const token = await axios.post('https://api.login.yahoo.com/oauth2/get_token/', {
+        'grant_type': 'authorization_code',
+        'redirect_uri': 'https://sad-jang-fc478d.netlify.com/',
+        'code': 'w7cfajg'
+      }, options)
+
+      console.log(token)
+    }
+
+
+    getToken()
+  })
 
 
   return (
     <>
       <Switch>
-        <Route exact path='/' component={!isAuthenticated && Dashboard} />
+        <Route path='/' component={Dashboard} />
       </Switch>
       <Switch>
         <Route exact path='/login' component={Dashboard} />
