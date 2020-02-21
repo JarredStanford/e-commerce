@@ -30,14 +30,14 @@ function App() {
 
 
   return (
-    <Router>
+    <>
       <Switch>
         <Route exact path='/' component={!isAuthenticated && Dashboard} />
       </Switch>
       <Switch>
         <Route exact path='/login' component={Dashboard} />
       </Switch>
-    </Router>
+    </>
   )
 
 }
